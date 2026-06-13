@@ -1,0 +1,1023 @@
+{
+  "seed": 42,
+  "generated_for": "Data Quality Audit System V1 \u2014 demo dataset",
+  "scope_note": "Ground truth of INTENTIONALLY INJECTED demo errors. Detection claims refer to this manifest only, not to all possible data errors.",
+  "total_injected_errors": 142,
+  "counts_by_class": {
+    "BIZ_001": 8,
+    "BIZ_002": 7,
+    "BIZ_003": 10,
+    "BIZ_004": 6,
+    "BIZ_005": 8,
+    "BIZ_006": 7,
+    "BIZ_007": 5,
+    "COM_001": 8,
+    "COM_002": 8,
+    "COM_003": 6,
+    "COM_004": 8,
+    "COM_005": 13,
+    "REL_001": 11,
+    "REL_002": 8,
+    "REL_003": 7,
+    "SCH_002": 9,
+    "UNI_001": 6,
+    "UNI_002": 4,
+    "UNI_003": 3
+  },
+  "errors": [
+    {
+      "table": "sales",
+      "row_ref": "S-00049",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '27.03.2024' (was 2024-03-27)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00898",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '2024/09/08' (was 2024-09-08)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01017",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '05-03-2024' (was 2024-03-05)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00751",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '02.05.2024' (was 2024-05-02)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01627",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '2024/02/25' (was 2024-02-25)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01432",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '08-06-2024' (was 2024-06-08)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00881",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '02.06.2024' (was 2024-06-02)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00043",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '2024/06/16' (was 2024-06-16)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01451",
+      "error_class": "SCH_002",
+      "column": "sale_date",
+      "detail": "non-ISO date format '16-03-2024' (was 2024-03-16)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01076",
+      "error_class": "COM_001",
+      "column": "customer_id",
+      "detail": "customer_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01839",
+      "error_class": "COM_001",
+      "column": "customer_id",
+      "detail": "customer_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01421",
+      "error_class": "COM_001",
+      "column": "customer_id",
+      "detail": "customer_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00755",
+      "error_class": "COM_001",
+      "column": "customer_id",
+      "detail": "customer_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01301",
+      "error_class": "COM_001",
+      "column": "customer_id",
+      "detail": "customer_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01114",
+      "error_class": "COM_001",
+      "column": "customer_id",
+      "detail": "customer_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00218",
+      "error_class": "COM_001",
+      "column": "customer_id",
+      "detail": "customer_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00858",
+      "error_class": "COM_001",
+      "column": "customer_id",
+      "detail": "customer_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00971",
+      "error_class": "COM_002",
+      "column": "product_id",
+      "detail": "product_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00069",
+      "error_class": "COM_002",
+      "column": "product_id",
+      "detail": "product_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00572",
+      "error_class": "COM_002",
+      "column": "product_id",
+      "detail": "product_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00894",
+      "error_class": "COM_002",
+      "column": "product_id",
+      "detail": "product_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01142",
+      "error_class": "COM_002",
+      "column": "product_id",
+      "detail": "product_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01438",
+      "error_class": "COM_002",
+      "column": "product_id",
+      "detail": "product_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00865",
+      "error_class": "COM_002",
+      "column": "product_id",
+      "detail": "product_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00138",
+      "error_class": "COM_002",
+      "column": "product_id",
+      "detail": "product_id missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00134",
+      "error_class": "COM_003",
+      "column": "sale_date",
+      "detail": "sale_date missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00179",
+      "error_class": "COM_003",
+      "column": "sale_date",
+      "detail": "sale_date missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00539",
+      "error_class": "COM_003",
+      "column": "sale_date",
+      "detail": "sale_date missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01798",
+      "error_class": "COM_003",
+      "column": "sale_date",
+      "detail": "sale_date missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01943",
+      "error_class": "COM_003",
+      "column": "sale_date",
+      "detail": "sale_date missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01362",
+      "error_class": "COM_003",
+      "column": "sale_date",
+      "detail": "sale_date missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00733",
+      "error_class": "COM_004",
+      "column": "quantity",
+      "detail": "quantity missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00973",
+      "error_class": "COM_004",
+      "column": "unit_price",
+      "detail": "unit_price missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00822",
+      "error_class": "COM_004",
+      "column": "quantity",
+      "detail": "quantity missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01039",
+      "error_class": "COM_004",
+      "column": "unit_price",
+      "detail": "unit_price missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01883",
+      "error_class": "COM_004",
+      "column": "quantity",
+      "detail": "quantity missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00499",
+      "error_class": "COM_004",
+      "column": "unit_price",
+      "detail": "unit_price missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01857",
+      "error_class": "COM_004",
+      "column": "quantity",
+      "detail": "quantity missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01901",
+      "error_class": "COM_004",
+      "column": "unit_price",
+      "detail": "unit_price missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01794",
+      "error_class": "COM_005",
+      "column": "discount",
+      "detail": "optional field discount missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00282",
+      "error_class": "COM_005",
+      "column": "region",
+      "detail": "optional field region missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00248",
+      "error_class": "COM_005",
+      "column": "sales_channel",
+      "detail": "optional field sales_channel missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00050",
+      "error_class": "COM_005",
+      "column": "discount",
+      "detail": "optional field discount missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00332",
+      "error_class": "COM_005",
+      "column": "region",
+      "detail": "optional field region missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00177",
+      "error_class": "COM_005",
+      "column": "sales_channel",
+      "detail": "optional field sales_channel missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01169",
+      "error_class": "COM_005",
+      "column": "discount",
+      "detail": "optional field discount missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00383",
+      "error_class": "COM_005",
+      "column": "region",
+      "detail": "optional field region missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01970",
+      "error_class": "COM_005",
+      "column": "sales_channel",
+      "detail": "optional field sales_channel missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00403",
+      "error_class": "COM_005",
+      "column": "discount",
+      "detail": "optional field discount missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00914",
+      "error_class": "COM_005",
+      "column": "region",
+      "detail": "optional field region missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01352",
+      "error_class": "COM_005",
+      "column": "sales_channel",
+      "detail": "optional field sales_channel missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01119",
+      "error_class": "COM_005",
+      "column": "discount",
+      "detail": "optional field discount missing"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00765",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9900 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01979",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9901 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01973",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9902 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00979",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9903 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00137",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9904 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01618",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9905 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01345",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9906 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00380",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9907 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01193",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9908 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00847",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9909 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00238",
+      "error_class": "REL_001",
+      "column": "customer_id",
+      "detail": "customer_id C-9910 does not exist in customers"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01147",
+      "error_class": "REL_002",
+      "column": "product_id",
+      "detail": "product_id P-900 does not exist in products"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00082",
+      "error_class": "REL_002",
+      "column": "product_id",
+      "detail": "product_id P-901 does not exist in products"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00476",
+      "error_class": "REL_002",
+      "column": "product_id",
+      "detail": "product_id P-902 does not exist in products"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00415",
+      "error_class": "REL_002",
+      "column": "product_id",
+      "detail": "product_id P-903 does not exist in products"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00302",
+      "error_class": "REL_002",
+      "column": "product_id",
+      "detail": "product_id P-904 does not exist in products"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00616",
+      "error_class": "REL_002",
+      "column": "product_id",
+      "detail": "product_id P-905 does not exist in products"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00273",
+      "error_class": "REL_002",
+      "column": "product_id",
+      "detail": "product_id P-906 does not exist in products"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01530",
+      "error_class": "REL_002",
+      "column": "product_id",
+      "detail": "product_id P-907 does not exist in products"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01437",
+      "error_class": "REL_003",
+      "column": "product_id",
+      "detail": "sale references inactive product P-046"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00801",
+      "error_class": "REL_003",
+      "column": "product_id",
+      "detail": "sale references inactive product P-047"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00023",
+      "error_class": "REL_003",
+      "column": "product_id",
+      "detail": "sale references inactive product P-048"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00762",
+      "error_class": "REL_003",
+      "column": "product_id",
+      "detail": "sale references inactive product P-049"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00123",
+      "error_class": "REL_003",
+      "column": "product_id",
+      "detail": "sale references inactive product P-050"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01045",
+      "error_class": "REL_003",
+      "column": "product_id",
+      "detail": "sale references inactive product P-046"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01615",
+      "error_class": "REL_003",
+      "column": "product_id",
+      "detail": "sale references inactive product P-047"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00025",
+      "error_class": "BIZ_001",
+      "column": "quantity",
+      "detail": "quantity 0 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00231",
+      "error_class": "BIZ_001",
+      "column": "quantity",
+      "detail": "quantity -3 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01075",
+      "error_class": "BIZ_001",
+      "column": "quantity",
+      "detail": "quantity -5 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01364",
+      "error_class": "BIZ_001",
+      "column": "quantity",
+      "detail": "quantity 0 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00545",
+      "error_class": "BIZ_001",
+      "column": "quantity",
+      "detail": "quantity -1 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01200",
+      "error_class": "BIZ_001",
+      "column": "quantity",
+      "detail": "quantity -3 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01087",
+      "error_class": "BIZ_001",
+      "column": "quantity",
+      "detail": "quantity -3 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00019",
+      "error_class": "BIZ_001",
+      "column": "quantity",
+      "detail": "quantity -5 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00622",
+      "error_class": "BIZ_002",
+      "column": "unit_price",
+      "detail": "unit_price -68.82 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01804",
+      "error_class": "BIZ_002",
+      "column": "unit_price",
+      "detail": "unit_price -48.39 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01662",
+      "error_class": "BIZ_002",
+      "column": "unit_price",
+      "detail": "unit_price -26.45 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00281",
+      "error_class": "BIZ_002",
+      "column": "unit_price",
+      "detail": "unit_price -22.65 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00655",
+      "error_class": "BIZ_002",
+      "column": "unit_price",
+      "detail": "unit_price -38.78 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01886",
+      "error_class": "BIZ_002",
+      "column": "unit_price",
+      "detail": "unit_price -29.03 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00500",
+      "error_class": "BIZ_002",
+      "column": "unit_price",
+      "detail": "unit_price -27.31 <= 0"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01763",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount -0.1 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00984",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount -0.1 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01641",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount 0.67 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00438",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount 0.67 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00387",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount 0.56 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01360",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount 0.9 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01968",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount 0.85 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00980",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount 0.6 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00981",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount 0.84 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00439",
+      "error_class": "BIZ_003",
+      "column": "discount",
+      "detail": "discount 0.89 outside [0, 0.5]"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00203",
+      "error_class": "BIZ_004",
+      "column": "sale_date",
+      "detail": "sale_date 2030-08-09 is in the future"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00354",
+      "error_class": "BIZ_004",
+      "column": "sale_date",
+      "detail": "sale_date 2030-04-20 is in the future"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00795",
+      "error_class": "BIZ_004",
+      "column": "sale_date",
+      "detail": "sale_date 2030-02-23 is in the future"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01133",
+      "error_class": "BIZ_004",
+      "column": "sale_date",
+      "detail": "sale_date 2030-06-08 is in the future"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01298",
+      "error_class": "BIZ_004",
+      "column": "sale_date",
+      "detail": "sale_date 2030-05-09 is in the future"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01285",
+      "error_class": "BIZ_004",
+      "column": "sale_date",
+      "detail": "sale_date 2030-02-12 is in the future"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01109",
+      "error_class": "BIZ_005",
+      "column": "region",
+      "detail": "region 'NORTH ' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01759",
+      "error_class": "BIZ_005",
+      "column": "region",
+      "detail": "region 'Sued' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01647",
+      "error_class": "BIZ_005",
+      "column": "region",
+      "detail": "region 'ZENTRAL' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00146",
+      "error_class": "BIZ_005",
+      "column": "region",
+      "detail": "region 'west ' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00300",
+      "error_class": "BIZ_005",
+      "column": "region",
+      "detail": "region 'EAST' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01367",
+      "error_class": "BIZ_005",
+      "column": "region",
+      "detail": "region 'Atlantis' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00261",
+      "error_class": "BIZ_005",
+      "column": "region",
+      "detail": "region 'Mordor' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01757",
+      "error_class": "BIZ_005",
+      "column": "region",
+      "detail": "region 'Springfield' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01924",
+      "error_class": "BIZ_006",
+      "column": "sales_channel",
+      "detail": "sales_channel 'Webshop' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00298",
+      "error_class": "BIZ_006",
+      "column": "sales_channel",
+      "detail": "sales_channel 'STORE ' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01764",
+      "error_class": "BIZ_006",
+      "column": "sales_channel",
+      "detail": "sales_channel 'Reseller' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01558",
+      "error_class": "BIZ_006",
+      "column": "sales_channel",
+      "detail": "sales_channel 'WEB' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00140",
+      "error_class": "BIZ_006",
+      "column": "sales_channel",
+      "detail": "sales_channel 'Online ' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01945",
+      "error_class": "BIZ_006",
+      "column": "sales_channel",
+      "detail": "sales_channel 'fax' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01052",
+      "error_class": "BIZ_006",
+      "column": "sales_channel",
+      "detail": "sales_channel 'carrier-pigeon' not in allowed list"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00149",
+      "error_class": "BIZ_007",
+      "column": "quantity",
+      "detail": "quantity 586 is an extreme outlier (median ~5)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01160",
+      "error_class": "BIZ_007",
+      "column": "quantity",
+      "detail": "quantity 370 is an extreme outlier (median ~5)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00338",
+      "error_class": "BIZ_007",
+      "column": "quantity",
+      "detail": "quantity 549 is an extreme outlier (median ~5)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00506",
+      "error_class": "BIZ_007",
+      "column": "quantity",
+      "detail": "quantity 499 is an extreme outlier (median ~5)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01284",
+      "error_class": "BIZ_007",
+      "column": "quantity",
+      "detail": "quantity 673 is an extreme outlier (median ~5)"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01543",
+      "error_class": "UNI_001",
+      "column": "sale_id",
+      "detail": "duplicate sale_id S-01543"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01938",
+      "error_class": "UNI_001",
+      "column": "sale_id",
+      "detail": "duplicate sale_id S-01938"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01718",
+      "error_class": "UNI_001",
+      "column": "sale_id",
+      "detail": "duplicate sale_id S-01718"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-01279",
+      "error_class": "UNI_001",
+      "column": "sale_id",
+      "detail": "duplicate sale_id S-01279"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00739",
+      "error_class": "UNI_001",
+      "column": "sale_id",
+      "detail": "duplicate sale_id S-00739"
+    },
+    {
+      "table": "sales",
+      "row_ref": "S-00461",
+      "error_class": "UNI_001",
+      "column": "sale_id",
+      "detail": "duplicate sale_id S-00461"
+    },
+    {
+      "table": "customers",
+      "row_ref": "C-0096",
+      "error_class": "UNI_002",
+      "column": "customer_id",
+      "detail": "duplicate customer_id C-0096"
+    },
+    {
+      "table": "customers",
+      "row_ref": "C-0016",
+      "error_class": "UNI_002",
+      "column": "customer_id",
+      "detail": "duplicate customer_id C-0016"
+    },
+    {
+      "table": "customers",
+      "row_ref": "C-0031",
+      "error_class": "UNI_002",
+      "column": "customer_id",
+      "detail": "duplicate customer_id C-0031"
+    },
+    {
+      "table": "customers",
+      "row_ref": "C-0159",
+      "error_class": "UNI_002",
+      "column": "customer_id",
+      "detail": "duplicate customer_id C-0159"
+    },
+    {
+      "table": "products",
+      "row_ref": "P-040",
+      "error_class": "UNI_003",
+      "column": "product_id",
+      "detail": "duplicate product_id P-040"
+    },
+    {
+      "table": "products",
+      "row_ref": "P-026",
+      "error_class": "UNI_003",
+      "column": "product_id",
+      "detail": "duplicate product_id P-026"
+    },
+    {
+      "table": "products",
+      "row_ref": "P-027",
+      "error_class": "UNI_003",
+      "column": "product_id",
+      "detail": "duplicate product_id P-027"
+    }
+  ]
+}
