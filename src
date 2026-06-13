@@ -1,0 +1,1 @@
+  Contains the Python modules for the audit pipeline: data loading, validation checks, error records, scoring, cleaning, report export, and demo data generation.
