@@ -304,89 +304,89 @@ def _render_summary_md(report: PipelineReport) -> str:
 
     L = ["# Before / After Summary", "",
          f"_Generated: {datetime.now():%Y-%m-%d %H:%M:%S}_", "",
-         "## 1. Ausgangslage", "",
-         "Sales-, Customer- und Product-Rohdaten aus mehreren Systemen. "
-         "Fehlende und unbekannte IDs, Dubletten, ungültige Beträge, "
-         "falsche Datumsformate und inkonsistente Kategorien machen ein "
-         "verlässliches Reporting unmöglich.", "",
-         f"Geprüfte Zeilen gesamt: {raw.total_row_count}.", "",
-         "## 2. Prüfungen", "",
-         "Fünf Validierungsschichten, read-only, gemeinsames "
-         "Error-Record-Format:", "",
+         "## 1. Initial Situation", "",
+         "Sales, customer, and product raw data from multiple systems. "
+         "Missing and unknown IDs, duplicates, invalid amounts, "
+         "wrong date formats, and inconsistent categories make "
+         "reliable reporting impossible.", "",
+         f"Total rows checked: {raw.total_row_count}.", "",
+         "## 2. Checks", "",
+         "Five validation layers, read-only, shared "
+         "error-record format:", "",
          "Schema · Completeness · Uniqueness · Relationships · "
          "Business Rules.", "",
-         "## 3. Befunde (raw)", "",
+         "## 3. Findings (raw)", "",
          f"**Quality Score: {raw.score}/100 {raw.emoji}** — "
-         f"{raw.total_errors} Fehler "
+         f"{raw.total_errors} issues "
          f"({raw.n_critical} critical, {raw.n_major} major, "
          f"{raw.n_minor} minor).", "",
-         "| Check | Gefunden | Aktion |", "|---|---|---|"]
+         "| Check | Found | Action |", "|---|---|---|"]
     act_map = report.config["cleaning_actions"]
     for check_id, n in sorted(raw.errors_by_check.items()):
         L.append(f"| {check_id} | {n} | {act_map[check_id]} |")
 
-    L += ["", "## 4. Bereinigung", "",
-          f"- **Gefixt:** {cl.total_fixed} "
-          f"(Datumsformat, Rabatt-Capping, Region/Channel-Mapping)",
-          f"- **Gedroppt:** {cl.total_dropped} "
-          f"(fehlende/ungültige Pflichtdaten, Dubletten, kaputte FKs)",
-          f"- **Geflaggt:** {cl.total_flagged} "
-          f"(behalten, aber markiert)", ""]
+    L += ["", "## 4. Cleaning", "",
+          f"- **Fixed:** {cl.total_fixed} "
+          f"(date format, discount capping, region/channel mapping)",
+          f"- **Dropped:** {cl.total_dropped} "
+          f"(missing/invalid required data, duplicates, broken FKs)",
+          f"- **Flagged:** {cl.total_flagged} "
+          f"(kept, but marked)", ""]
     if cl.escalated_to_drop:
-        L += [f"- Davon {len(cl.escalated_to_drop)} FIX-Versuche "
-              f"eskaliert zu DROP (nicht reparierbar).", ""]
-    L += ["Drop-Verteilung: "
+        L += [f"- Of these, {len(cl.escalated_to_drop)} FIX attempts "
+              f"escalated to DROP (not repairable).", ""]
+    L += ["Drop distribution: "
           + ", ".join(f"{k} {v}" for k, v in sorted(dropped.items()))
           + ".", ""]
 
-    L += ["## 5. Restunsicherheit", ""]
+    L += ["## 5. Residual Uncertainty", ""]
 
     # FIX-flags (documented, but no longer open risk) vs. real residual
     fixed_flags = {"BIZ_003"}
-    fix_meaning = {"BIZ_003": "Rabattwerte wurden auf das Maximum gecappt"}
-    residual_meaning = {"COM_005": "optionale Felder fehlen",
-                        "REL_003": "inaktive Produkte verkauft",
-                        "BIZ_007": "Umsatz-Ausreißer"}
+    fix_meaning = {"BIZ_003": "discount values were capped at the maximum"}
+    residual_meaning = {"COM_005": "optional fields are missing",
+                        "REL_003": "inactive products were sold",
+                        "BIZ_007": "revenue outliers"}
 
     doc_fixes = {k: v for k, v in flagged.items() if k in fixed_flags}
     real_residual = {k: v for k, v in flagged.items()
                      if k not in fixed_flags}
 
     if doc_fixes:
-        L += ["**Dokumentierte Fix-Hinweise** (behoben und markiert, "
-              "keine offene Unsicherheit):", ""]
+        L += ["**Documented fix notes** (resolved and marked, "
+              "no open uncertainty):", ""]
         for k, v in sorted(doc_fixes.items()):
             L.append(f"- {k}: {v} {fix_meaning.get(k, '')}")
         L.append("")
 
-    L += ["**Verbleibende Restunsicherheit** (bewusst behalten, im "
-          "`quality_flag` markiert):", ""]
+    L += ["**Remaining residual uncertainty** (intentionally kept, marked in "
+          "`quality_flag`):", ""]
     for k, v in sorted(real_residual.items()):
         L.append(f"- {k}: {v} {residual_meaning.get(k, '')}")
-    L += ["", f"Nach Cleaning verbleiben {clean.total_errors} "
-          f"dokumentierte Hinweise ({clean.n_major} major, "
-          f"{clean.n_minor} minor) — keine kritischen Fehler.", ""]
+    L += ["", f"After cleaning, {clean.total_errors} "
+          f"documented notes remain ({clean.n_major} major, "
+          f"{clean.n_minor} minor) — no critical issues.", ""]
 
-    L += ["## 6. Ergebnis", "",
+    L += ["## 6. Result", "",
           f"### Before: {raw.score}/100 {raw.emoji}  →  "
           f"After: {clean.score}/100 {clean.emoji}", "",
-          f"Das bereinigte Master-Dataset umfasst "
-          f"{len(cl.master)} reportingfähige Zeilen mit berechneten "
-          f"Umsätzen (gross/net) und Qualitäts-Flags. Reports zu Umsatz, "
-          f"Kunden und Produkten sind jetzt verlässlich möglich.", "",
-          "Gedroppte Zeilen werden aus dem Reporting ausgeschlossen; "
-          "geflaggte Zeilen bleiben sichtbar und prüfbar — nicht "
-          "verstecken, sondern kontrolliert entscheiden.", ""]
+          f"The cleaned master dataset contains "
+          f"{len(cl.master)} reporting-ready rows with calculated "
+          f"revenues (gross/net) and quality flags. Reports on revenue, "
+          f"customers, and products are now reliable.", "",
+          "Dropped rows are excluded from reporting; "
+          "flagged rows remain visible and reviewable — do not "
+          "hide issues, decide in a controlled way.", ""]
 
     if report.manifest:
         total = report.manifest.get("total_injected_errors")
         detected = sum(1 for e in report.manifest.get("errors", []))
-        L += ["## Verifizierbarkeit", "",
+        L += ["## Verifiability", "",
               f"Known injected demo errors detected: {detected} / {total}.",
               "",
-              "_Der Claim bezieht sich ausschließlich auf die kontrolliert "
-              "injizierten, bekannten Demo-Fehler — nicht auf alle "
-              "möglichen Datenfehler._", ""]
+              "_This claim refers exclusively to the controlled, "
+              "intentionally injected, known demo errors — not to all "
+              "possible data quality issues._", ""]
     return "\n".join(L) + "\n"
 
 
