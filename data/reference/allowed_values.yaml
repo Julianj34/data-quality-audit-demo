@@ -1,0 +1,147 @@
+# =============================================================================
+# allowed_values.yaml — Single Source of Truth (C0)
+# Data Quality Audit System V1
+#
+# Principle: Code = Measurement. Config = Rules. Reports = Interpretation.
+# Changing a rule requires no code change.
+#
+# Completeness contract:
+#   severity_map and cleaning_actions MUST contain every check ID.
+#   error_record.validate_config() enforces this at pipeline startup.
+# =============================================================================
+
+allowed_values:
+  regions: [North, South, East, West, Central]
+  sales_channels: [online, retail, partner]
+  customer_segments: [B2B, B2C, Enterprise]
+
+  # Synonym mapping for FIX (BIZ_005 / BIZ_006).
+  # Keys are lowercased and trimmed before lookup.
+  # No match -> DROP (see cleaning table, architecture section 9).
+  region_synonyms:
+    north: North
+    sued: South
+    south: South
+    east: East
+    west: West
+    central: Central
+    zentral: Central
+  channel_synonyms:
+    online: online
+    web: online
+    webshop: online
+    retail: retail
+    store: retail
+    partner: partner
+    reseller: partner
+
+business_rules:
+  max_discount: 0.5            # BIZ_003: discount in [0, max_discount]
+  min_quantity: 1              # BIZ_001: quantity >= min_quantity
+  min_unit_price: 0.01         # BIZ_002: unit_price > 0
+  date_min: "2020-01-01"       # plausibility lower bound for sale_date
+  outlier_quantity_factor: 10  # BIZ_007: quantity > factor x median (positive values)
+                               # price outlier detection vs. standard_price requires
+                               # resolved product references -> V2
+
+# -----------------------------------------------------------------------------
+# Severity per check ID (complete — contract!)
+# CRITICAL: row unusable for reporting
+# MAJOR:    row distorts aggregations
+# MINOR:    row usable, but worth documenting
+# -----------------------------------------------------------------------------
+severity_map:
+  SCH_001: CRITICAL   # Expected column missing (file-level -> pipeline abort)
+  SCH_002: MAJOR      # Wrong data type (e.g. date not parseable)
+  SCH_003: CRITICAL   # Required field empty
+  COM_001: CRITICAL   # customer_id missing in sales
+  COM_002: CRITICAL   # product_id missing in sales
+  COM_003: MAJOR      # sale_date missing
+  COM_004: CRITICAL   # quantity / unit_price missing
+  COM_005: MINOR      # optional field missing
+  UNI_001: MAJOR      # duplicate sale_id
+  UNI_002: MAJOR      # duplicate customer_id in customers
+  UNI_003: MAJOR      # duplicate product_id in products
+  REL_001: CRITICAL   # customer_id not found in customers
+  REL_002: CRITICAL   # product_id not found in products
+  REL_003: MAJOR      # sale of an inactive product
+  BIZ_001: CRITICAL   # quantity <= 0
+  BIZ_002: CRITICAL   # unit_price <= 0
+  BIZ_003: MAJOR      # discount outside [0, max_discount]
+  BIZ_004: MAJOR      # sale_date in the future
+  BIZ_005: MAJOR      # region not allowed
+  BIZ_006: MAJOR      # sales_channel not allowed
+  BIZ_007: MINOR      # revenue outlier
+
+# -----------------------------------------------------------------------------
+# Cleaning action per check ID (complete — contract!)
+# Matches the FIX/DROP/FLAG table 1:1 (architecture, section 9).
+# -----------------------------------------------------------------------------
+cleaning_actions:
+  SCH_001: DROP   # formal only; never reached because file-level errors abort before cleaning
+  SCH_002: FIX    # normalize date to ISO 8601; not parseable -> DROP (fallback)
+  SCH_003: DROP   # required field empty -> row unusable
+  COM_001: DROP   # no assignment possible without FK
+  COM_002: DROP
+  COM_003: DROP   # no monthly assignment possible without date
+  COM_004: DROP   # no revenue possible without quantity/price
+  COM_005: FLAG   # reporting still possible
+  UNI_001: DROP   # keep first instance, remove duplicates
+  UNI_002: DROP
+  UNI_003: DROP
+  REL_001: DROP   # relationship cannot be established
+  REL_002: DROP
+  REL_003: FLAG   # plausible (remaining stock), but worth reviewing
+  BIZ_001: DROP   # return handling != V1 scope
+  BIZ_002: DROP
+  BIZ_003: FIX    # cap to max_discount, documented with FLAG
+  BIZ_004: DROP   # future date is not plausible
+  BIZ_005: FIX    # synonym mapping; no match -> DROP (fallback)
+  BIZ_006: FIX    # synonym mapping; no match -> DROP (fallback)
+  BIZ_007: FLAG   # keep, shown in summary
+
+# -----------------------------------------------------------------------------
+# Scoring (architecture, section 8.2)
+# weighted_error_points      = n_critical*1.0 + n_major*0.4 + n_minor*0.1
+# error_points_per_1000_rows = weighted_error_points / total_row_count * 1000
+# quality_score              = max(0, 100 - error_points_per_1000_rows), rounded
+# -----------------------------------------------------------------------------
+scoring:
+  weights:
+    CRITICAL: 1.0
+    MAJOR: 0.4
+    MINOR: 0.1
+  normalize_per_rows: 1000
+  traffic_light:
+    green: 90    # score >= 90 -> green
+    yellow: 70   # 70 <= score < 90 -> yellow, else red
+
+# -----------------------------------------------------------------------------
+# Schema definition per table
+# required: missing -> SCH_001 (pipeline abort) / empty -> SCH_003 or COM_*
+# optional: empty -> COM_005 (FLAG)
+# -----------------------------------------------------------------------------
+required_columns:
+  sales: [sale_id, sale_date, customer_id, product_id, quantity, unit_price]
+  customers: [customer_id, customer_name]
+  products: [product_id, product_name, standard_price, active_status]
+  targets: [month, region, target_revenue]
+
+optional_columns:
+  sales: [discount, region, sales_channel]
+  customers: [customer_segment, country, signup_date]
+  products: [category]
+  targets: []
+
+column_types:
+  sales:
+    sale_date: date
+    quantity: numeric
+    unit_price: numeric
+    discount: numeric
+  customers:
+    signup_date: date
+  products:
+    standard_price: numeric
+  targets:
+    target_revenue: numeric
