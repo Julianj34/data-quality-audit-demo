@@ -1,0 +1,11 @@
+# Data Quality Audit System V1 — runtime dependencies
+# Deliberately minimal: the hand-structured validation logic is the point,
+# so no Great Expectations / Pandera. Just data handling, Excel I/O, config.
+#
+# Lower bounds are conservative (pandas 2.x works); the versions this
+# project was developed and tested against are noted on each line.
+
+pandas>=2.0        # tested with 3.0.2
+numpy>=1.24        # tested with 2.4.4
+openpyxl>=3.1      # tested with 3.1.5  (Excel read/write)
+pyyaml>=6.0        # tested with 6.0.3  (allowed_values.yaml)
